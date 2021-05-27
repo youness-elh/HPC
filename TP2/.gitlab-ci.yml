@@ -1,0 +1,21 @@
+image: berenger/spetabaruci
+
+build:
+  tags:
+    - docker
+  script:
+    - mkdir build
+    - cd build
+    - cmake -DUSE_TESTING=ON ..
+    - make
+
+test:
+  tags:
+    - docker
+  script:
+    - mkdir build
+    - cd build
+    - cmake -DUSE_TESTING=ON ..
+    - make
+    - CTEST_OUTPUT_ON_FAILURE=TRUE make test
+
